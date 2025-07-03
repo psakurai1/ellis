@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    container_name: marvel-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    # O comando abaixo sobrescreve o CMD do Dockerfile para incluir --reload,
+    # que é ideal para o ambiente de desenvolvimento.
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
